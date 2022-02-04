@@ -9,11 +9,6 @@
 
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
-</head>
-
-<body>
-<div>Hello <span id="name">world</span>!!!!</div>
-
 <script>
 	// LIFFの初期化を行う
 	liff.init({
@@ -33,24 +28,32 @@
 	})
 	})
 
-	// sendMessages call
-	if (!liff.isInClient()) {
-	    window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-	} else {
-	    liff.sendMessages([
-	        {
-	            type: 'text',
-	            text: 'Hello, World!',
-	        },
-	    ])
-	        .then(() => {
-	            window.alert('Message sent');
-	        })
-	        .catch((error) => {
-	            window.alert('Error sending message: ' + error);
-	        });
+	function sendMessages() {
+		// sendMessages call
+		if (!liff.isInClient()) {
+		    window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+		} else {
+		    liff.sendMessages([
+		        {
+		            type: 'text',
+		            text: 'Hello, World!',
+		        },
+		    ])
+		        .then(() => {
+		            window.alert('Message sent');
+		        })
+		        .catch((error) => {
+		            window.alert('Error sending message: ' + error);
+		        });
+		}
 	}
 </script>
+
+</head>
+
+<body>
+<div>Hello <span id="name">world</span>★</div>
+<input type='button' onclick="sendMessages()"/>
 
 </body>
 </html>
