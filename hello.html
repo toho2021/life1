@@ -31,6 +31,18 @@
 		        });
 		}
 	}
+	
+	
+	function hoge() {
+		liff.getFriendship().then(data => {
+		  if (data.friendFlag) {
+			document.querySelector("#message").innerText = 'あなたは「友だち」です';
+		  } else {
+			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません';
+		  }
+		});
+	}
+	
 </script>
 
 </head>
@@ -40,6 +52,7 @@
 <h3><span id="message"></span></h3>
 
 <input type='button' value="sendMessage" onclick="sendMessages()"/>
+<input type='button' value="hoge" onclick="hoge()"/>
 
 <script>
 	// LIFFの初期化を行う
@@ -58,9 +71,9 @@
 
 		liff.getFriendship().then(data => {
 		  if (data.friendFlag) {
-			document.querySelector("#message").innerText = 'あなたは「友だち」です😀';
+			document.querySelector("#message").innerText = 'あなたは「友だち」です';
 		  } else {
-			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません😱';
+			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません';
 		  }
 		});
 
