@@ -37,11 +37,12 @@
 		window.alert('hoge');
 
 		liff.getFriendship().then(data => {
-		  if (data.friendFlag) {
-			window.alert('あなたは「友だち」です');
-		  } else {
-			window.alert('あなたは「友だち」ではありません');
-		  }
+			window.alert('hoge2');
+			if (data.friendFlag) {
+				window.alert('あなたは「友だち」です');
+			} else {
+				window.alert('あなたは「友だち」ではありません');
+			}
 		});
 	}
 	
@@ -54,7 +55,7 @@
 <h3><span id="message"></span></h3>
 
 <input type='button' value="メッセージ送信" onclick="sendMessages()"/>
-<input type='button' value="hoge" onclick="hoge()"/>
+<input type='button' value="hoge2" onclick="hoge()"/>
 
 <script>
 	// LIFFの初期化を行う
