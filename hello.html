@@ -36,7 +36,9 @@
 </head>
 
 <body>
-<h1>こんにちは <span id="name"></span> さん</h1>
+<h2>こんにちは <span id="name"></span> さん</h2>
+<h3><span id="message"></span></h3>
+
 <input type='button' value="sendMessage" onclick="sendMessages()"/>
 
 <script>
@@ -56,9 +58,9 @@
 
 		liff.getFriendship().then(data => {
 		  if (data.friendFlag) {
-			window.alert('あなたは「友だち」です😀');
+			document.querySelector("#message").innerText = 'あなたは「友だち」です😀';
 		  } else {
-			window.alert('あなたは「友だち」ではありません😱');
+			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません😱';
 		  }
 		});
 
