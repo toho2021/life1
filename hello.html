@@ -34,11 +34,13 @@
 	
 	
 	function hoge() {
+		window.alert('hoge');
+
 		liff.getFriendship().then(data => {
 		  if (data.friendFlag) {
-			document.querySelector("#message").innerText = 'あなたは「友だち」です';
+			window.alert('あなたは「友だち」です');
 		  } else {
-			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません';
+			window.alert('あなたは「友だち」ではありません');
 		  }
 		});
 	}
@@ -51,7 +53,7 @@
 <h2>こんにちは <span id="name"></span> さん</h2>
 <h3><span id="message"></span></h3>
 
-<input type='button' value="sendMessage" onclick="sendMessages()"/>
+<input type='button' value="メッセージ送信" onclick="sendMessages()"/>
 <input type='button' value="hoge" onclick="hoge()"/>
 
 <script>
