@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv='cache-control' content='no-cache'>
+  <title>Hello from LIFE</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+
+<script>
+
+	function sendMessages() {
+		// sendMessages call
+		if (!liff.isInClient()) {
+		    window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+		} else {
+		    liff.sendMessages([
+		        {
+		            type: 'text',
+		            text: 'こんにちは😄',
+		        },
+		    ])
+		        .then(() => {
+		            window.alert('Message sent');
+		        })
+		        .catch((error) => {
+		            window.alert('Error sending message: ' + error);
+		        });
+		}
+	}
+	
+	
+	function hoge() {
+		window.alert('hoge');
+
+		liff.getFriendship().then(data => {
+			window.alert('hoge2');
+			if (data.friendFlag) {
+				window.alert('あなたは「友だち」です');
+			} else {
+				window.alert('あなたは「友だち」ではありません');
+			}
+		});
+	}
+	
+</script>
+
+</head>
+
+<body>
+<h2>こんにちは★ <span id="name"></span> さん</h2>
+<h3><span id="message"></span></h3>
+
+<input type='button' value="メッセージ送信" onclick="sendMessages()"/>
+<input type='button' value="hello2" onclick="hoge()"/>
+
+<script>
+	// LIFFの初期化を行う
+	liff.init({
+		// 自分のLIFF ID（URLから『https://liff.line.me/』を除いた文字列）を入力する
+		liffId: "1656862002-Yq9KKVE1"
+	}).then(() => { // 初期化完了. 以降はLIFF SDKの各種メソッドを利用できる
+
+		// 利用者のLINEアカウントのプロフィール名を取得
+		liff.getProfile().then(profile => {
+			// プロフィール名
+			const name = profile.displayName
+			// HTMLに挿入
+			document.querySelector("#name").innerText = name
+		})
+
+		liff.getFriendship().then(data => {
+		  if (data.friendFlag) {
+			document.querySelector("#message").innerText = 'あなたは「友だち」です';
+		  } else {
+			document.querySelector("#message").innerText = 'あなたは「友だち」ではありません';
+		  }
+		});
+
+	})
+
+
+</script>
+
+</body>
+</html>
